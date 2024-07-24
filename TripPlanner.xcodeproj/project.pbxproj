@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A29517922C4691AB00C9B3EC /* ApiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29517912C4691AB00C9B3EC /* ApiView.swift */; };
+		A24A74B62C50908E00ACC54E /* PlanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24A74B52C50908E00ACC54E /* PlanController.swift */; };
+		A24A74B82C50921A00ACC54E /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24A74B72C50921A00ACC54E /* PlanView.swift */; };
+		A24A74BE2C50961B00ACC54E /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A24A74BD2C50961B00ACC54E /* ImageController.swift */; };
 		A29517952C46927100C9B3EC /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = A29517942C46927100C9B3EC /* OpenAI */; };
 		A29DC9762C29287900AAE7FA /* TripPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29DC9752C29287900AAE7FA /* TripPlannerApp.swift */; };
 		A29DC9782C29287900AAE7FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29DC9772C29287900AAE7FA /* ContentView.swift */; };
@@ -36,7 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A29517912C4691AB00C9B3EC /* ApiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiView.swift; sourceTree = "<group>"; };
+		A24A74B52C50908E00ACC54E /* PlanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanController.swift; sourceTree = "<group>"; };
+		A24A74B72C50921A00ACC54E /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
+		A24A74BD2C50961B00ACC54E /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
 		A29DC9722C29287900AAE7FA /* TripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A29DC9752C29287900AAE7FA /* TripPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlannerApp.swift; sourceTree = "<group>"; };
 		A29DC9772C29287900AAE7FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -75,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A24A74BC2C50942300ACC54E /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				A24A74B52C50908E00ACC54E /* PlanController.swift */,
+				A24A74BD2C50961B00ACC54E /* ImageController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		A29DC9692C29287900AAE7FA = {
 			isa = PBXGroup;
 			children = (
@@ -98,10 +111,12 @@
 		A29DC9742C29287900AAE7FA /* TripPlanner */ = {
 			isa = PBXGroup;
 			children = (
+				A24A74BC2C50942300ACC54E /* Controller */,
 				A29DC9752C29287900AAE7FA /* TripPlannerApp.swift */,
 				A29DC9772C29287900AAE7FA /* ContentView.swift */,
-				A29517912C4691AB00C9B3EC /* ApiView.swift */,
+				A24A74B72C50921A00ACC54E /* PlanView.swift */,
 				A29DC9792C29287C00AAE7FA /* Assets.xcassets */,
+				A29DC97C2C29287C00AAE7FA /* Preview Assets.xcassets */,
 				A29DC97B2C29287C00AAE7FA /* Preview Content */,
 			);
 			path = TripPlanner;
@@ -110,7 +125,6 @@
 		A29DC97B2C29287C00AAE7FA /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				A29DC97C2C29287C00AAE7FA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -270,7 +284,9 @@
 			files = (
 				A29DC9782C29287900AAE7FA /* ContentView.swift in Sources */,
 				A29DC9762C29287900AAE7FA /* TripPlannerApp.swift in Sources */,
-				A29517922C4691AB00C9B3EC /* ApiView.swift in Sources */,
+				A24A74B62C50908E00ACC54E /* PlanController.swift in Sources */,
+				A24A74B82C50921A00ACC54E /* PlanView.swift in Sources */,
+				A24A74BE2C50961B00ACC54E /* ImageController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
