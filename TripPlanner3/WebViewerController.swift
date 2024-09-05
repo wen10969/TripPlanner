@@ -37,10 +37,17 @@ class WebViewerController: UIViewController {
     }
     
     private func setupUI() {
+        let backgroundImage = UIImageView(frame: UIScreen.main.bounds)
+                backgroundImage.image = UIImage(named: "image0(5)") // Replace with your image name
+                backgroundImage.contentMode = .scaleAspectFill
+        self.view.addSubview(backgroundImage)
+        
+        self.view.addSubview(webView)
+        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(didTapDone))
         self.navigationController?.navigationBar.backgroundColor = .secondarySystemBackground
         
-        self.view.addSubview(webView)
+        //self.view.addSubview(webView)
         self.webView.translatesAutoresizingMaskIntoConstraints = false
         
         NSLayoutConstraint.activate([
@@ -55,3 +62,4 @@ class WebViewerController: UIViewController {
         self.dismiss(animated: true, completion: nil)
     }
 }
+
