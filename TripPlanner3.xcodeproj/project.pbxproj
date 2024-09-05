@@ -30,6 +30,7 @@
 		DB3D11B22C6451CA0067E215 /* LoginUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D11B12C6451CA0067E215 /* LoginUserRequest.swift */; };
 		DB3D11B42C645A610067E215 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D11B32C645A610067E215 /* Validator.swift */; };
 		DB3D11B62C645AAD0067E215 /*  User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D11B52C645AAD0067E215 /*  User.swift */; };
+		DBC8A0522C894BD80034CA2D /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A0512C894BD80034CA2D /* SecondView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,7 @@
 		DB3D11B12C6451CA0067E215 /* LoginUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUserRequest.swift; sourceTree = "<group>"; };
 		DB3D11B32C645A610067E215 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		DB3D11B52C645AAD0067E215 /*  User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " User.swift"; sourceTree = "<group>"; };
+		DBC8A0512C894BD80034CA2D /* SecondView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +151,7 @@
 		DB3D11642C6199E50067E215 /* TripPlanner3 */ = {
 			isa = PBXGroup;
 			children = (
+				DBC8A0512C894BD80034CA2D /* SecondView.swift */,
 				DB3D11AC2C64515F0067E215 /* AuthService.swift */,
 				DB3D11A62C64486C0067E215 /* AlertManager.swift */,
 				DB3D11B32C645A610067E215 /* Validator.swift */,
@@ -413,6 +416,7 @@
 				DB3D119C2C6447AA0067E215 /* LoginController.swift in Sources */,
 				DB3D11A12C6447F80067E215 /* AuthHeaderView.swift in Sources */,
 				DB3D11A52C6448270067E215 /* CustomTextField.swift in Sources */,
+				DBC8A0522C894BD80034CA2D /* SecondView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
