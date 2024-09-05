@@ -1,3 +1,4 @@
+
 //
 //  LoginController.swift
 //  TripPlanner3
@@ -6,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI  // Import SwiftUI to use UIHostingController
 
 class LoginController: UIViewController {
     
@@ -119,6 +121,13 @@ class LoginController: UIViewController {
     @objc private func didTapNewUser() {
         let vc = RegisterController()
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func goToSecondView() {
+        // Wrap SecondView in a UIHostingController
+        let secondView = SecondView() // Your SwiftUI view
+        let hostingController = UIHostingController(rootView: secondView) // Wrap in UIHostingController
+        self.navigationController?.pushViewController(hostingController, animated: true) // Push the hosting controller
     }
     
     @objc private func didTapForgotPassword() {

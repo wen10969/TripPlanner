@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwiftUI
 import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -14,7 +15,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         self.setupWindow(with: scene)
-        self.checkAuthentication()
+        self.checkAuthentication()  
     }
     
     private func setupWindow(with scene: UIScene) {
@@ -26,9 +27,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     public func checkAuthentication() {
         if Auth.auth().currentUser == nil {
+            // If the user is not authenticated, show the LoginController
             self.goToController(with: LoginController())
         } else {
-            self.goToController(with: HomeController())
+            // If the user is authenticated, show the SecondView
+            self.showSecondView()
         }
     }
     
@@ -36,9 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         DispatchQueue.main.async { [weak self] in
             UIView.animate(withDuration: 0.25) {
                 self?.window?.layer.opacity = 0
-                
             } completion: { [weak self] _ in
-                
                 let nav = UINavigationController(rootViewController: viewController)
                 nav.modalPresentationStyle = .fullScreen
                 self?.window?.rootViewController = nav
@@ -49,4 +50,21 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             }
         }
     }
+    
+    private func showSecondView() {
+        DispatchQueue.main.async { [weak self] in
+            UIView.animate(withDuration: 0.1) {
+                self?.window?.layer.opacity = 0
+            } completion: { [weak self] _ in
+                let hostingController = UIHostingController(rootView: SecondView())
+                hostingController.modalPresentationStyle = .fullScreen
+                self?.window?.rootViewController = hostingController
+                
+                UIView.animate(withDuration: 0.1) { [weak self] in
+                    self?.window?.layer.opacity = 1
+                }
+            }
+        }
+    }
 }
+

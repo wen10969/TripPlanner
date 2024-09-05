@@ -34,6 +34,7 @@ class HomeController: UIViewController {
             
             if let user = user {
                 self.label.text = "\(user.username)\n\(user.email)"
+                
             }
         }
     }
