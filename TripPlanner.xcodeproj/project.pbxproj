@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1372BD5C2C362FEF00276241 /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = 1372BD5B2C362FEF00276241 /* OpenAI */; };
+		1372BD602C53FFB900276241 /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1372BD5F2C53FFB900276241 /* PlanView.swift */; };
+		1372BD632C54004E00276241 /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1372BD622C54004E00276241 /* ImageController.swift */; };
+		1372BD652C54006000276241 /* PlanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1372BD642C54006000276241 /* PlanController.swift */; };
 		A29DC9762C29287900AAE7FA /* TripPlannerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29DC9752C29287900AAE7FA /* TripPlannerApp.swift */; };
 		A29DC9782C29287900AAE7FA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A29DC9772C29287900AAE7FA /* ContentView.swift */; };
 		A29DC97A2C29287C00AAE7FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A29DC9792C29287C00AAE7FA /* Assets.xcassets */; };
@@ -34,6 +38,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1372BD5F2C53FFB900276241 /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
+		1372BD622C54004E00276241 /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
+		1372BD642C54006000276241 /* PlanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanController.swift; sourceTree = "<group>"; };
 		A29DC9722C29287900AAE7FA /* TripPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A29DC9752C29287900AAE7FA /* TripPlannerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripPlannerApp.swift; sourceTree = "<group>"; };
 		A29DC9772C29287900AAE7FA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1372BD5C2C362FEF00276241 /* OpenAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +79,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1372BD612C54003100276241 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1372BD622C54004E00276241 /* ImageController.swift */,
+				1372BD642C54006000276241 /* PlanController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		A29DC9692C29287900AAE7FA = {
 			isa = PBXGroup;
 			children = (
@@ -95,7 +112,9 @@
 			isa = PBXGroup;
 			children = (
 				A29DC9752C29287900AAE7FA /* TripPlannerApp.swift */,
+				1372BD612C54003100276241 /* Controller */,
 				A29DC9772C29287900AAE7FA /* ContentView.swift */,
+				1372BD5F2C53FFB900276241 /* PlanView.swift */,
 				A29DC9792C29287C00AAE7FA /* Assets.xcassets */,
 				A29DC97B2C29287C00AAE7FA /* Preview Content */,
 			);
@@ -143,6 +162,9 @@
 			dependencies = (
 			);
 			name = TripPlanner;
+			packageProductDependencies = (
+				1372BD5B2C362FEF00276241 /* OpenAI */,
+			);
 			productName = TripPlanner;
 			productReference = A29DC9722C29287900AAE7FA /* TripPlanner.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +237,9 @@
 				Base,
 			);
 			mainGroup = A29DC9692C29287900AAE7FA;
+			packageReferences = (
+				1372BD5A2C362FEF00276241 /* XCRemoteSwiftPackageReference "OpenAI" */,
+			);
 			productRefGroup = A29DC9732C29287900AAE7FA /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,6 +284,9 @@
 			files = (
 				A29DC9782C29287900AAE7FA /* ContentView.swift in Sources */,
 				A29DC9762C29287900AAE7FA /* TripPlannerApp.swift in Sources */,
+				1372BD602C53FFB900276241 /* PlanView.swift in Sources */,
+				1372BD632C54004E00276241 /* ImageController.swift in Sources */,
+				1372BD652C54006000276241 /* PlanController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -582,6 +610,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1372BD5A2C362FEF00276241 /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.9;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1372BD5B2C362FEF00276241 /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1372BD5A2C362FEF00276241 /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A29DC96A2C29287900AAE7FA /* Project object */;
 }
