@@ -15,7 +15,7 @@ import SwiftUI
 import OpenAI
 
 // this class is repsonsible for handling user input, querying the API,
-// parsing teh responses, and fetching relevant images for each location
+// parsing the responses, and fetching relevant images for each location
 class PlanController: ObservableObject {
     @Published var messages: [Message] = []
     @Published var locationActivities: [LocationActivities] = []
@@ -26,10 +26,10 @@ class PlanController: ObservableObject {
     private let imageController = ImageController.shared
     
     // send a user message
-    func sendNewMessage(location: String, filter:String) {
+    func sendNewMessage(location: String, filter:String, days: Int) {
         // the query formatted in JSON to send to openAI
         let queryMessage = """
-                Give me the top 5 \(filter) tourist activities in \(location).
+                Give me the top \(days) \(filter) tourist activities in \(location).
                 Respond in the following JSON format:
                 {
                   "locations": [

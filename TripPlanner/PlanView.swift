@@ -3,39 +3,22 @@ import SwiftUI
 // set up the app view
 struct PlanView: View {
     @StateObject var planController: PlanController = .init()
+    
     @State var location: String = ""
     @State var filter: String = ""
+    @State var days: Int
+    
     var body: some View {
         VStack {
-            // styling for textfields(location & filter) and the search button
-            HStack {
-                TextField("Location, State...", text: self.$location)
-                    .padding(5)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(15)
-                    .frame(width: 220)
-                TextField("Filter...", text: self.$filter)
-                    .padding(5)
-                    .background(Color.gray.opacity(0.1))
-                    .cornerRadius(15)
-                    .frame(width: 130)
-            }
-            .padding()
-            HStack {
-                Button {
-                    self.planController.sendNewMessage(location: location, filter: filter)
-                    location = ""
-                    filter = ""
-                } label: {
-                    Text("Plan My Trip!")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(25)
-                }
-            }
+            
+            Text("Planning a trip to \(location) for \(days) days with a focus on \(filter) trips")
+                .font(.headline)
+                .padding()
         }
+        
         Divider()
+        
+        
         // styling for each message and search result
         VStack {
             ScrollView {
@@ -94,6 +77,11 @@ struct PlanView: View {
                 }
             }
         }
+        
+        // Automatically trigger the trip planning when the view appears
+        .onAppear {
+            self.planController.sendNewMessage(location: location, filter: filter, days: days)
+        }
     }
 }
 
@@ -129,5 +117,6 @@ struct MessageView: View {
 
  
 #Preview {
-    PlanView()
+    //PlanView()
+    PlanView(location: "Sample City", filter: "Sample Filter", days: 5)
 }
