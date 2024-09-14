@@ -1,3 +1,10 @@
+//
+//  PlanView.swift
+//  TripPlanner
+//
+//  Created by Wen Li on 6/23/24.
+//
+
 import SwiftUI
 
 // set up the app view
@@ -14,6 +21,7 @@ struct PlanView: View {
             Text("Planning a trip to \(location) for \(days) days with a focus on \(filter) trips")
                 .font(.headline)
                 .padding()
+            
         }
         
         Divider()

@@ -11,6 +11,8 @@ struct SecondView: View {
     @State private var selectedCity: String = "Enter destination"
     @State private var selectedDays: Int = 5
     @State private var selectedTripTypes: Set<String> = []
+    @StateObject private var planController = PlanController() // Create PlanController instance
+
     let daysOptions = [1, 2, 3, 4, 5, 6, 7, 8]
     let cities = ["Los Angeles, USA", "Honolulu, USA", "Paris, France", "Santorini, Greece", "Mumbai, India", "Shanghai, China", "Tokyo, Japan", "New York City, USA", "Cancun, Mexico", "London, England"]
 
@@ -107,10 +109,9 @@ struct SecondView: View {
                 }
                 .frame(width: buttonWidth)
 
-                
-                // Linking Second View with Plan View and passing on values
+                // Linking Second View with ItineraryView and passing values
                 NavigationLink(
-                    destination: PlanView(location: selectedCity, filter: selectedTripTypes.first ?? "", days: selectedDays)){
+                    destination: ItineraryView(location: selectedCity, days: selectedDays, planController: planController)) {
                         Text("Plan Your Next Trip!")
                             .font(.headline)
                             .padding()
@@ -119,8 +120,8 @@ struct SecondView: View {
                             .foregroundColor(.white)
                             .cornerRadius(8)
                 }
-                // end of newly added section
-                
+                // end of navigation link
+
                 .padding(.horizontal)
 
                 Spacer()
@@ -156,9 +157,9 @@ struct SecondView: View {
         Text(title)
             .font(.headline)
             .padding()
-            .frame(width: (buttonWidth - 10) / 2, height: elementHeight) // Ensuring equal width and height
-            .background(selectedTripTypes.contains(title) ? Color(red: 96/255, green: 131/255, blue: 153/255) : Color(red: 200/255, green: 228/255, blue: 250/255)) // Background color when selected
-            .foregroundColor(selectedTripTypes.contains(title) ? Color.white : Color.black) // Text color
+            .frame(width: (buttonWidth - 10) / 2, height: elementHeight)
+            .background(selectedTripTypes.contains(title) ? Color(red: 96/255, green: 131/255, blue: 153/255) : Color(red: 200/255, green: 228/255, blue: 250/255))
+            .foregroundColor(selectedTripTypes.contains(title) ? Color.white : Color.black)
             .cornerRadius(8)
             .onTapGesture {
                 if selectedTripTypes.contains(title) {
@@ -180,4 +181,3 @@ struct SecondView: View {
         .foregroundColor(.blue)
     }
 }
-
