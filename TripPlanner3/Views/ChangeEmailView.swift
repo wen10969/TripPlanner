@@ -1,23 +1,21 @@
 //
-//  ChangePasswordView.swift
+//  ChangeEmailView.swift
 //  TripPlanner3
 //
 //  Created by stlp on 9/14/24.
 //
-
 import SwiftUI
 import FirebaseAuth
 
-struct ChangePasswordView: View {
+struct ChangeEmailView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var currentPassword: String = ""
-    @State private var newPassword: String = ""
-    @State private var confirmPassword: String = ""
+    @State private var newEmail: String = ""
     @State private var errorMessage: String?
 
     var body: some View {
         VStack(spacing: 20) {
-            Text("Change Password")
+            Text("Change Email")
                 .font(.largeTitle)
                 .padding()
 
@@ -25,11 +23,8 @@ struct ChangePasswordView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal)
 
-            SecureField("New Password", text: $newPassword)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding(.horizontal)
-
-            SecureField("Confirm New Password", text: $confirmPassword)
+            TextField("New Email", text: $newEmail)
+                .keyboardType(.emailAddress)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding(.horizontal)
 
@@ -39,8 +34,8 @@ struct ChangePasswordView: View {
                     .padding()
             }
 
-            Button(action: changePassword) {
-                Text("Update Password")
+            Button(action: changeEmail) {
+                Text("Update Email")
                     .font(.headline)
                     .padding()
                     .frame(maxWidth: .infinity)
@@ -54,18 +49,18 @@ struct ChangePasswordView: View {
         }
         .padding(.top)  // To provide padding from top without back button
         .background(Color(.systemGroupedBackground))
-        .navigationTitle("Change Password")  // Use the default navigation title
+        .navigationTitle("Change Email")  // Use the default navigation title
         .navigationBarTitleDisplayMode(.inline)  // Ensure the title is inline for consistency
     }
 
-    private func changePassword() {
-        guard newPassword == confirmPassword else {
-            errorMessage = "New passwords do not match."
+    private func changeEmail() {
+        guard let user = Auth.auth().currentUser else {
+            errorMessage = "User not authenticated."
             return
         }
 
-        guard let user = Auth.auth().currentUser else {
-            errorMessage = "User not authenticated."
+        guard !newEmail.isEmpty else {
+            errorMessage = "New email cannot be empty."
             return
         }
 
@@ -77,12 +72,12 @@ struct ChangePasswordView: View {
                 return
             }
 
-            // Update to new password
-            user.updatePassword(to: newPassword) { error in
+            // Update to new email
+            user.updateEmail(to: newEmail) { error in
                 if let error = error {
                     errorMessage = "Error: \(error.localizedDescription)"
                 } else {
-                    errorMessage = "Password updated successfully!"
+                    errorMessage = "Email updated successfully!"
                 }
             }
         }
