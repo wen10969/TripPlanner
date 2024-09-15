@@ -25,9 +25,18 @@ extension AlertManager {
         self.showBasicAlert(on: vc, title: "Invalid Email", message: "Please enter a valid email.")
     }
     
+//    public static func showInvalidPasswordAlert(on vc: UIViewController) {
+//        self.showBasicAlert(on: vc, title: "Invalid Password", message: "Please enter a valid password.")
+//    }
+    
     public static func showInvalidPasswordAlert(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Invalid Password", message: "Please enter a valid password.")
+        self.showBasicAlert(
+            on: vc,
+            title: "Invalid Password",
+            message: "Your password must be 6-32 characters long, and include at least one uppercase letter, one lowercase letter, one digit, and one special character."
+        )
     }
+
     
     public static func showInvalidUsernameAlert(on vc: UIViewController) {
         self.showBasicAlert(on: vc, title: "Invalid Username", message: "Please enter a valid username.")
@@ -74,8 +83,13 @@ extension AlertManager {
 extension AlertManager {
 
     public static func showPasswordResetSent(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "Password Reset Sent", message: nil)
+        self.showBasicAlert(
+            on: vc,
+            title: "Password Reset Sent",
+            message: "A link to reset your password has been sent to your email. Please check your inbox and follow the instructions."
+        )
     }
+
     
     public static func showErrorSendingPasswordReset(on vc: UIViewController, with error: Error) {
         self.showBasicAlert(on: vc, title: "Error Sending Password Reset", message: "\(error.localizedDescription)")
