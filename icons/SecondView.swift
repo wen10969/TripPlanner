@@ -804,6 +804,8 @@
 //        }
 //    }
 //}
+
+
 import SwiftUI
 
 struct SecondView: View {
@@ -844,7 +846,7 @@ struct SecondView: View {
                             Text("Where are you headed?")
                                 .font(.title)
                                 .foregroundColor(.white)
-                                .padding(.top, 70) // Adjusted padding for better alignment
+                                .padding(.top, 100) // Adjusted padding for better alignment
                             
                             // Destination Menu inside the gradient box
                             Menu {
@@ -964,7 +966,7 @@ struct SecondView: View {
                     .background(Color.white)
                     .cornerRadius(8)
                     .shadow(radius: 5)
-                    .padding(.bottom, 1)
+                    .padding(.bottom, 10)
                 }
                 .edgesIgnoringSafeArea(.bottom)
             }
@@ -1026,3 +1028,6 @@ struct SecondView: View {
         }
     }
 }
+
+
+
