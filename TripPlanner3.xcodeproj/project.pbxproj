@@ -10,7 +10,6 @@
 		B545CE73CFB789D6E39EA22B /* Pods_TripPlanner3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D99151A11AE8CBB7350A40 /* Pods_TripPlanner3.framework */; };
 		DB3D11662C6199E50067E215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D11652C6199E50067E215 /* AppDelegate.swift */; };
 		DB3D11682C6199E50067E215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D11672C6199E50067E215 /* SceneDelegate.swift */; };
-		DB3D116F2C6199E60067E215 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB3D116E2C6199E60067E215 /* Assets.xcassets */; };
 		DB3D11722C6199E60067E215 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = DB3D11712C6199E60067E215 /* Base */; };
 		DB3D117D2C6199E60067E215 /* TripPlanner3Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D117C2C6199E60067E215 /* TripPlanner3Tests.swift */; };
 		DB3D11872C6199E60067E215 /* TripPlanner3UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D11862C6199E60067E215 /* TripPlanner3UITests.swift */; };
@@ -31,6 +30,23 @@
 		DB3D11B42C645A610067E215 /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D11B32C645A610067E215 /* Validator.swift */; };
 		DB3D11B62C645AAD0067E215 /*  User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D11B52C645AAD0067E215 /*  User.swift */; };
 		DBC8A0522C894BD80034CA2D /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A0512C894BD80034CA2D /* SecondView.swift */; };
+		DBC8A0542C8D63B60034CA2D /* SplashController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A0532C8D63B60034CA2D /* SplashController.swift */; };
+		DBC8A0562C8D64FE0034CA2D /* IntroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A0552C8D64FE0034CA2D /* IntroController.swift */; };
+		DBC8A0582C8E82F10034CA2D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB3D116E2C6199E60067E215 /* Assets.xcassets */; };
+		DBC8A05C2C955CF20034CA2D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A05B2C955CF20034CA2D /* ProfileView.swift */; };
+		DBC8A05E2C9560920034CA2D /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A05D2C9560920034CA2D /* ImagePicker.swift */; };
+		DBC8A0602C9563A10034CA2D /* ProfileRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A05F2C9563A10034CA2D /* ProfileRow.swift */; };
+		DBC8A06A2C9622730034CA2D /* RoundedCorner.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A0692C9622730034CA2D /* RoundedCorner.swift */; };
+		DBC8A0702C962E050034CA2D /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A06F2C962E050034CA2D /* ProfileHeaderView.swift */; };
+		DBC8A0722C962FFC0034CA2D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A0712C962FFC0034CA2D /* SettingsView.swift */; };
+		DBC8A0742C966B510034CA2D /* ChangePasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A0732C966B510034CA2D /* ChangePasswordView.swift */; };
+		DBC8A0762C966C770034CA2D /* PastTripsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A0752C966C770034CA2D /* PastTripsView.swift */; };
+		DBC8A0782C9695A80034CA2D /* PlanController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A0772C9695A80034CA2D /* PlanController.swift */; };
+		DBC8A07B2C96964C0034CA2D /* OpenAI in Frameworks */ = {isa = PBXBuildFile; productRef = DBC8A07A2C96964C0034CA2D /* OpenAI */; };
+		DBC8A07D2C96969C0034CA2D /* ImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A07C2C96969C0034CA2D /* ImageController.swift */; };
+		DBC8A07F2C96970D0034CA2D /* ItineraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A07E2C96970D0034CA2D /* ItineraryView.swift */; };
+		DBC8A0812C9697370034CA2D /* PlanView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A0802C9697370034CA2D /* PlanView.swift */; };
+		DBC8A0832C96975F0034CA2D /* DayActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8A0822C96975F0034CA2D /* DayActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +84,7 @@
 		DB3D11972C6447790067E215 /* ForgotPasswordController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordController.swift; sourceTree = "<group>"; };
 		DB3D11992C6447930067E215 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		DB3D119B2C6447AA0067E215 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
-		DB3D119D2C6447C10067E215 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		DB3D119D2C6447C10067E215 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		DB3D11A02C6447F80067E215 /* AuthHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthHeaderView.swift; sourceTree = "<group>"; };
 		DB3D11A22C64480E0067E215 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		DB3D11A42C6448270067E215 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -81,6 +97,21 @@
 		DB3D11B32C645A610067E215 /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		DB3D11B52C645AAD0067E215 /*  User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " User.swift"; sourceTree = "<group>"; };
 		DBC8A0512C894BD80034CA2D /* SecondView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		DBC8A0532C8D63B60034CA2D /* SplashController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashController.swift; sourceTree = "<group>"; };
+		DBC8A0552C8D64FE0034CA2D /* IntroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroController.swift; sourceTree = "<group>"; };
+		DBC8A05B2C955CF20034CA2D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		DBC8A05D2C9560920034CA2D /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		DBC8A05F2C9563A10034CA2D /* ProfileRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRow.swift; sourceTree = "<group>"; };
+		DBC8A0692C9622730034CA2D /* RoundedCorner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCorner.swift; sourceTree = "<group>"; };
+		DBC8A06F2C962E050034CA2D /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
+		DBC8A0712C962FFC0034CA2D /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		DBC8A0732C966B510034CA2D /* ChangePasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordView.swift; sourceTree = "<group>"; };
+		DBC8A0752C966C770034CA2D /* PastTripsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastTripsView.swift; sourceTree = "<group>"; };
+		DBC8A0772C9695A80034CA2D /* PlanController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanController.swift; sourceTree = "<group>"; };
+		DBC8A07C2C96969C0034CA2D /* ImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageController.swift; sourceTree = "<group>"; };
+		DBC8A07E2C96970D0034CA2D /* ItineraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryView.swift; sourceTree = "<group>"; };
+		DBC8A0802C9697370034CA2D /* PlanView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanView.swift; sourceTree = "<group>"; };
+		DBC8A0822C96975F0034CA2D /* DayActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBC8A07B2C96964C0034CA2D /* OpenAI in Frameworks */,
 				B545CE73CFB789D6E39EA22B /* Pods_TripPlanner3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -151,6 +183,9 @@
 		DB3D11642C6199E50067E215 /* TripPlanner3 */ = {
 			isa = PBXGroup;
 			children = (
+				DBC8A05F2C9563A10034CA2D /* ProfileRow.swift */,
+				DBC8A05D2C9560920034CA2D /* ImagePicker.swift */,
+				DBC8A05B2C955CF20034CA2D /* ProfileView.swift */,
 				DBC8A0512C894BD80034CA2D /* SecondView.swift */,
 				DB3D11AC2C64515F0067E215 /* AuthService.swift */,
 				DB3D11A62C64486C0067E215 /* AlertManager.swift */,
@@ -161,6 +196,8 @@
 				DB3D11962C6446860067E215 /* Supporting */,
 				DB3D11732C6199E60067E215 /* Info.plist */,
 				DB3D11A82C64488F0067E215 /* WebViewerController.swift */,
+				DBC8A06F2C962E050034CA2D /* ProfileHeaderView.swift */,
+				DBC8A0752C966C770034CA2D /* PastTripsView.swift */,
 			);
 			path = TripPlanner3;
 			sourceTree = "<group>";
@@ -185,10 +222,16 @@
 		DB3D11952C64464D0067E215 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DBC8A0712C962FFC0034CA2D /* SettingsView.swift */,
+				DBC8A0732C966B510034CA2D /* ChangePasswordView.swift */,
 				DB3D11972C6447790067E215 /* ForgotPasswordController.swift */,
 				DB3D11992C6447930067E215 /* HomeController.swift */,
 				DB3D119B2C6447AA0067E215 /* LoginController.swift */,
 				DB3D119D2C6447C10067E215 /* RegisterController.swift */,
+				DBC8A0532C8D63B60034CA2D /* SplashController.swift */,
+				DBC8A0552C8D64FE0034CA2D /* IntroController.swift */,
+				DBC8A0772C9695A80034CA2D /* PlanController.swift */,
+				DBC8A07C2C96969C0034CA2D /* ImageController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -211,6 +254,9 @@
 				DB3D11A02C6447F80067E215 /* AuthHeaderView.swift */,
 				DB3D11A22C64480E0067E215 /* CustomButton.swift */,
 				DB3D11A42C6448270067E215 /* CustomTextField.swift */,
+				DBC8A07E2C96970D0034CA2D /* ItineraryView.swift */,
+				DBC8A0802C9697370034CA2D /* PlanView.swift */,
+				DBC8A0822C96975F0034CA2D /* DayActivityView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -221,6 +267,7 @@
 				DB3D11AF2C6451AE0067E215 /* RegiserUserRequest.swift */,
 				DB3D11B12C6451CA0067E215 /* LoginUserRequest.swift */,
 				DB3D11B52C645AAD0067E215 /*  User.swift */,
+				DBC8A0692C9622730034CA2D /* RoundedCorner.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -243,6 +290,9 @@
 			dependencies = (
 			);
 			name = TripPlanner3;
+			packageProductDependencies = (
+				DBC8A07A2C96964C0034CA2D /* OpenAI */,
+			);
 			productName = TripPlanner3;
 			productReference = DB3D11622C6199E50067E215 /* TripPlanner3.app */;
 			productType = "com.apple.product-type.application";
@@ -315,6 +365,9 @@
 				Base,
 			);
 			mainGroup = DB3D11592C6199E50067E215;
+			packageReferences = (
+				DBC8A0792C96964C0034CA2D /* XCRemoteSwiftPackageReference "OpenAI" */,
+			);
 			productRefGroup = DB3D11632C6199E50067E215 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -331,8 +384,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB3D116F2C6199E60067E215 /* Assets.xcassets in Resources */,
 				DB3D11722C6199E60067E215 /* Base in Resources */,
+				DBC8A0582C8E82F10034CA2D /* Assets.xcassets in Resources */,
 				DB3D11AB2C644AFA0067E215 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,23 +453,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBC8A06A2C9622730034CA2D /* RoundedCorner.swift in Sources */,
 				DB3D119A2C6447930067E215 /* HomeController.swift in Sources */,
 				DB3D11B02C6451AE0067E215 /* RegiserUserRequest.swift in Sources */,
+				DBC8A0562C8D64FE0034CA2D /* IntroController.swift in Sources */,
+				DBC8A0762C966C770034CA2D /* PastTripsView.swift in Sources */,
+				DBC8A05E2C9560920034CA2D /* ImagePicker.swift in Sources */,
 				DB3D11662C6199E50067E215 /* AppDelegate.swift in Sources */,
 				DB3D11A72C64486C0067E215 /* AlertManager.swift in Sources */,
+				DBC8A07F2C96970D0034CA2D /* ItineraryView.swift in Sources */,
+				DBC8A07D2C96969C0034CA2D /* ImageController.swift in Sources */,
 				DB3D11B22C6451CA0067E215 /* LoginUserRequest.swift in Sources */,
 				DB3D11B62C645AAD0067E215 /*  User.swift in Sources */,
 				DB3D11A92C64488F0067E215 /* WebViewerController.swift in Sources */,
 				DB3D11AD2C64515F0067E215 /* AuthService.swift in Sources */,
+				DBC8A0702C962E050034CA2D /* ProfileHeaderView.swift in Sources */,
+				DBC8A0812C9697370034CA2D /* PlanView.swift in Sources */,
+				DBC8A0542C8D63B60034CA2D /* SplashController.swift in Sources */,
 				DB3D11B42C645A610067E215 /* Validator.swift in Sources */,
 				DB3D119E2C6447C10067E215 /* RegisterController.swift in Sources */,
+				DBC8A05C2C955CF20034CA2D /* ProfileView.swift in Sources */,
 				DB3D11982C6447790067E215 /* ForgotPasswordController.swift in Sources */,
 				DB3D11A32C64480E0067E215 /* CustomButton.swift in Sources */,
+				DBC8A0832C96975F0034CA2D /* DayActivityView.swift in Sources */,
+				DBC8A0602C9563A10034CA2D /* ProfileRow.swift in Sources */,
+				DBC8A0742C966B510034CA2D /* ChangePasswordView.swift in Sources */,
 				DB3D11682C6199E50067E215 /* SceneDelegate.swift in Sources */,
 				DB3D119C2C6447AA0067E215 /* LoginController.swift in Sources */,
 				DB3D11A12C6447F80067E215 /* AuthHeaderView.swift in Sources */,
 				DB3D11A52C6448270067E215 /* CustomTextField.swift in Sources */,
 				DBC8A0522C894BD80034CA2D /* SecondView.swift in Sources */,
+				DBC8A0782C9695A80034CA2D /* PlanController.swift in Sources */,
+				DBC8A0722C962FFC0034CA2D /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,6 +827,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DBC8A0792C96964C0034CA2D /* XCRemoteSwiftPackageReference "OpenAI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MacPaw/OpenAI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DBC8A07A2C96964C0034CA2D /* OpenAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DBC8A0792C96964C0034CA2D /* XCRemoteSwiftPackageReference "OpenAI" */;
+			productName = OpenAI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DB3D115A2C6199E50067E215 /* Project object */;
 }
