@@ -83,3 +83,4 @@ struct URLs: Decodable {
     // we are using the small version of the image
     var small: String
 }
+

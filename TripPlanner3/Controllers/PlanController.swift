@@ -14,37 +14,60 @@
 import SwiftUI
 import OpenAI
 
+
 // this class is repsonsible for handling user input, querying the API,
 // parsing the responses, and fetching relevant images for each location
 class PlanController: ObservableObject {
-    @Published var messages: [Message] = []
-    @Published var locationActivities: [LocationActivities] = []
+    @Published var messages: [Message] = []  // array of messages exchanged with the API
+    @Published var locationActivities: [LocationActivities] = []  // Activities for each location
+    @Published var locationActivitiesByDay: [DayActivities] = []  // activities for each day
+    @Published var hasGeneratedActivities: Bool = false  // flag that tracks if activities have been generated
     
-    // my private API key
-    private let openAI = OpenAI(apiToken: "sk-proj-G5R6LNdl0focpuuETLXKT3BlbkFJPPnj2ZgM7yq5qJK10JU9")
+    
+    // new API key
+    private let openAI = OpenAI(apiToken: "temp")
+
+    
     // use the shared instance of ImageController
     private let imageController = ImageController.shared
     
-    // send a user message
-    func sendNewMessage(location: String, filter:String, days: Int) {
-        // the query formatted in JSON to send to openAI
+    
+    // sends a new message to the API to generate the trips details from user input from SecondView
+    func sendNewMessage(location: String, filter: String, days: Int) {
+        // query to send to the API
         let queryMessage = """
-                Give me the top \(days) \(filter) tourist activities in \(location).
-                Respond in the following JSON format:
+        Plan a \(days)-day \(filter) trip in \(location). Each day should include several activity locations that are close to each other. Provide the location's name, a detailed description of what the traveler will do at that location, and the location's address. The address can't be in the description. Include useful tips and fun facts. For longer activities, include fewer activity locations for that day. Provide a very descriptive summary of the day's plan at the start in the same order as the locations are listed for each day. Respond in the following JSON format:
+        {
+          "days": [
+            {
+              "day": 1,
+              "summary": "A very descriptive summary of the day's activities.",
+              "locations": [
                 {
-                  "locations": [
-                    {
-                      "location": "Location Name",
-                      "activities": ["Activity 1", "Activity 2", ...]
-                    }
-                  ]
+                  "location": "Location Name 1",
+                  "description": "A detailed paragraph describing the activity the traveler will be doing at that location, including any useful tips and fun facts.",
+                  "address": "Full address of the location."
+                },
+                {
+                  "location": "Location Name 2",
+                  "description": "A detailed paragraph describing the activity the traveler will be doing at that location, including any useful tips and fun facts.",
+                  "address": "Full address of the location."
                 }
-                """
+              ]
+            },
+            ...
+          ]
+        }
+        """
+        // making a Message instance to represent the user's query
         let userMessage = Message(content: queryMessage, isUser: true)
+        // append the message to the messages array
         self.messages.append(userMessage)
-        // gather gpt result
+        // call the API to get a reply from the query message that was sent
         getApiReply(for: queryMessage)
     }
+
+    
     
     // request a gpt search result
     func getApiReply(for queryMessage: String) {
@@ -75,73 +98,93 @@ class PlanController: ObservableObject {
             }
         }
     }
-    // parse the bot's reply and extract location and activites
+    
+    // parses the API's response and updates the activities for the location
     func parseApiReply(_ reply: String) {
-        // attempt to convert the reply string into a Data object using UTF-8 encoding
-        // if failed, return nil
+        // converting the API's reply string to data for JSON decoding
         guard let data = reply.data(using: .utf8) else {
             return
         }
         do {
-            // decode the JSON data into the LocationsResponse structure
+            // decode the JSON into a LocationResponse object
             let jsonResponse = try JSONDecoder().decode(LocationResponse.self, from: data)
-            // use DispatchGroop to handle Asynchronous Tasks
-            // dispatchGroup is used to keep track of multiple asynchronous tasks and notify when all tasks are completed
+            // manages asynchronous image loading
             let group = DispatchGroup()
             
-            // this array temporarily holds the LocationActivities objects until all image URLs are fetched
-            var tempLocationActivities: [LocationActivities] = []
+            // a temp array that stores the day activities
+            var tempDayActivities: [DayActivities] = []
             
-            // loop Through Locations and Fetch Images
-            for location in jsonResponse.locations {
-                // indicate an asynchronous task has started
-                group.enter()
-                // call search function to fetch the image URL
-                // then append a new LocationActivities object to tempLocationActivities with the fetched imageUrl
-                imageController.search(for: location.location) { imageUrl in
-                    tempLocationActivities.append(
-                        LocationActivities(location: location.location, activities: location.activities, imageUrl: imageUrl))
-                    // indicate that the asynchronous task has finished
-                    group.leave()
+            // iterate through each day
+            for day in jsonResponse.days {
+                // temp array that stores activities for each location in the day
+                var tempLocationActivities: [LocationActivities] = []
+                
+                // iterate through each location
+                for location in day.locations {
+                    // enter the dispatch group
+                    group.enter()
+                    // search for an image URL based on the location name
+                    imageController.search(for: location.location) { imageUrl in
+                        // create LocationActivities object and append it to the temp array
+                        tempLocationActivities.append(
+                            LocationActivities(
+                                location: location.location, // location name
+                                description: location.description, // location description
+                                address: location.address, // location address
+                                imageUrl: imageUrl // location image URL
+                            )
+                        )
+                        // leave the dispatch group after the asynchornous task is completed
+                        group.leave()
+                    }
+                }
+                
+                // notify the main queue when all images have been fetched for the day
+                group.notify(queue: .main) {
+                    // appending the day's activities to temp array
+                    tempDayActivities.append(DayActivities(day: day.day, summary: day.summary, locations: tempLocationActivities))
                 }
             }
-            //  notify when all tasks are completed
+            
+            // notify the main queue when all of the days for the city have been processed
             group.notify(queue: .main) {
-                // assign temp array to self.locationActivities
-                self.locationActivities = tempLocationActivities
+                // updating the main activities array from the temp one
+                self.locationActivitiesByDay = tempDayActivities
+                // all activities have been generated so the flag is now true
+                self.hasGeneratedActivities = true
             }
-           
             
         } catch {
+            // if JSON parsing fails
             print("Failed to parse JSON: \(error)")
         }
     }
 }
+
 /* How String -> Data conversion works
    The 'reply' string is converted to 'Data'.
    The 'data'in Data type is decoded into a 'LocationsResponse' object.
    The 'locations' array from 'LocationsResponse' is mapped to a temp array of 'LocationActivities', which is then assigned to self.locationActivities for use in the SwiftUI view.
  */
 
-// struct to represent the JSON response from the openAI API
+
+// struct to represent the decoded JSON response for the location activities
 struct LocationResponse: Decodable {
-    struct Location: Decodable {
-        let location: String
-        // array of activities in one location
-        let activities: [String]
+    struct Day: Decodable {
+        let day: Int  // day number
+        let summary: String  // summary for all the activities done in a day
+        let locations: [Location]  // list of activities for the day
     }
-    // array of locations
-    let locations: [Location]
+    
+    struct Location: Decodable {
+        let location: String  // location name
+        let description: String  // location activity descriptions
+        let address: String // Add this field to store the address
+    }
+    
+    let days: [Day]  // array for number of days in the trip
 }
 
-// struct to represent the location activities
-struct LocationActivities: Identifiable {
-    var id: UUID = .init()
-    var location: String
-    var activities: [String]
-    // the url of the location image
-    var imageUrl: String?
-}
 
 // struct to represent a message
 struct Message: Identifiable {
@@ -151,3 +194,22 @@ struct Message: Identifiable {
     // indicate user input or openAI response
     var isUser: Bool
 }
+
+// struct to represent the activities for a specific day
+struct DayActivities: Identifiable {
+    var id: UUID = .init()  // identifier for the day
+    var day: Int  // day number
+    var summary: String  // summary for the day's activities
+    var locations: [LocationActivities]  // array of activities for the day
+}
+
+// struct to represent the activities for a specific location
+struct LocationActivities: Identifiable {
+    var id: UUID = .init()  // identifier for the location
+    var location: String  // location name
+    var description: String  // activity description
+    var address: String  // address of the location
+    var imageUrl: String?  // optional URL for the image of the location
+}
+
+

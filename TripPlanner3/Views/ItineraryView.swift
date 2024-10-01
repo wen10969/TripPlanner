@@ -7,42 +7,52 @@
 
 import SwiftUI
 
+// For the itinerary page display right after user input
 struct ItineraryView: View {
-    var location: String
-    var days: Int
+    var location: String  // name of the location
+    var days: Int  // number of days for the trip
     @ObservedObject var planController: PlanController
 
+    // height and width of the buttons for each day
     let buttonHeight: CGFloat = 120
-    let buttonWidth: CGFloat = UIScreen.main.bounds.width * 0.9
+    let buttonWidth: CGFloat = UIScreen.main.bounds.width * 0.85
     
     var body: some View {
         VStack(spacing: 15) {
             // Header Section with Location and Days
-            VStack {
+            VStack(alignment: .leading) {
+                // Location text and align it to the left
                 Text(location)
                     .font(.largeTitle)
                     .fontWeight(.bold)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(2)
                     .padding(.top, 30)
                 
+                // Display the number of days below the location
                 Text("\(days) Days")
                     .font(.title3)
                     .foregroundColor(.gray)
             }
-            .padding(.bottom, 20)
+            .frame(maxWidth: .infinity, alignment: .leading) // Left align the whole VStack
+            .padding(.leading, 20) // Add padding for a better left alignment appearance
+            .padding(.bottom, 20)  // bottom padding for spacing
             
             // Day Buttons Section
             ScrollView {
                 VStack(spacing: 25) {
-                    ForEach(1...days, id: \.self) { day in
+                    // loop through activities ny each day
+                    ForEach(planController.locationActivitiesByDay) { dayActivities in
+                        // screen navigates to DayActivityView when the day button is pressed
                         NavigationLink(
-                            destination: DayActivityView(day: day, planController: planController)) {
+                            destination: DayActivityView(location: location, dayActivities: dayActivities)) {
                             HStack {
-                                Spacer()
                                 VStack(alignment: .leading) {
-                                    Text("Day \(day)")
+                                    // display the day number on the button
+                                    Text("Day \(dayActivities.day)")
                                         .font(.title2)
                                         .fontWeight(.bold)
-                                    
+                                    // displays extra 'view activites' text but can be changed
                                     Text("View Activities")
                                         .font(.subheadline)
                                         .foregroundColor(.gray)
@@ -51,16 +61,19 @@ struct ItineraryView: View {
                                 
                                 Spacer()
                                 
+                                // right arrow on button
                                 Image(systemName: "chevron.right")
                                     .foregroundColor(.blue)
                                     .padding(.trailing, 15)
                             }
+                            // button sizing and color details
                             .frame(width: buttonWidth, height: buttonHeight)
                             .background(Color(.systemGray6))
                             .cornerRadius(10)
                             .shadow(radius: 2)
                             .padding(.horizontal)
-                            .padding(.top, day == 1 ? 10 : 0)
+                            // add top padding for the first button only
+                            .padding(.top, dayActivities.day == 1 ? 10 : 0)
                         }
                     }
                 }
@@ -68,12 +81,13 @@ struct ItineraryView: View {
             .padding(.bottom, 20)
             Spacer()
         }
-        .navigationBarTitle("Itinerary Page", displayMode: .inline)
+        
         .onAppear {
-            // Only fetch the data once when the activities are empty
-            if planController.locationActivities.isEmpty {
+            // Only fetch the data once if not already generated
+            if !planController.hasGeneratedActivities {
                 planController.sendNewMessage(location: location, filter: "Relaxing", days: days)
             }
         }
     }
 }
+
