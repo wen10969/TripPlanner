@@ -123,19 +123,27 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
     
-    private func showSecondView() {
-        DispatchQueue.main.async { [weak self] in
-            UIView.animate(withDuration: 0.0) {  // Set duration to 0.0 to remove animation
-                self?.window?.layer.opacity = 0
-            } completion: { [weak self] _ in
-                let hostingController = UIHostingController(rootView: SecondView())
-                hostingController.modalPresentationStyle = .fullScreen
-                self?.window?.rootViewController = hostingController
-                
-                UIView.animate(withDuration: 0.0) {  // Set duration to 0.0 to remove animation
-                    self?.window?.layer.opacity = 1
+    // Show the SecondView and pass the user UID
+        private func showSecondView() {
+            DispatchQueue.main.async { [weak self] in
+                if let user = Auth.auth().currentUser {
+                    let userUID = user.uid  // Retrieve the current user's UID
+
+                    UIView.animate(withDuration: 0.0) {  // Set duration to 0.0 to remove animation
+                        self?.window?.layer.opacity = 0
+                    } completion: { [weak self] _ in
+                        let hostingController = UIHostingController(rootView: SecondView(userUID: userUID))  // Pass userUID to SecondView
+                        hostingController.modalPresentationStyle = .fullScreen
+                        self?.window?.rootViewController = hostingController
+
+                        UIView.animate(withDuration: 0.0) {  // Set duration to 0.0 to remove animation
+                            self?.window?.layer.opacity = 1
+                        }
+                    }
+                } else {
+                    // If user is not authenticated, fallback to login screen
+                    self?.goToController(with: LoginController())
                 }
             }
         }
-    }
 }

@@ -320,6 +320,7 @@
 
 import UIKit
 import SwiftUI  // Import SwiftUI to use UIHostingController
+import FirebaseAuth  // Import Firebase Authentication
 
 class LoginController: UIViewController {
     
@@ -506,11 +507,18 @@ class LoginController: UIViewController {
     }
     
     @objc private func goToSecondView() {
-        // Wrap SecondView in a UIHostingController
-        let secondView = SecondView() 
-        let hostingController = UIHostingController(rootView: secondView) // Wrap in UIHostingController
-        self.navigationController?.pushViewController(hostingController, animated: true) // Push the hosting controller
+        // Retrieve the user UID from Firebase Auth
+        guard let userUID = Auth.auth().currentUser?.uid else {
+            print("User is not logged in.")
+            return
+        }
+        
+        // Wrap SecondView in a UIHostingController and pass userUID
+        let secondView = SecondView(userUID: userUID)  // Pass userUID to SecondView
+        let hostingController = UIHostingController(rootView: secondView)  // Wrap in UIHostingController
+        self.navigationController?.pushViewController(hostingController, animated: true)  // Push the hosting controller
     }
+
     
     @objc private func didTapForgotPassword() {
         let vc = ForgotPasswordController()

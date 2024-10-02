@@ -13,6 +13,7 @@ struct SettingsView: View {
     let gradientEndColor = Color(UIColor(red: 41/255, green: 102/255, blue: 117/255, alpha: 1))
 
     @State private var selectedTab: Tab = .settings  // Manage the active tab state
+    var userUID: String
 
     var body: some View {
         NavigationView {
@@ -166,13 +167,13 @@ struct SettingsView: View {
         if let window = UIApplication.shared.windows.first {
             switch tab {
             case .pastTrips:
-                window.rootViewController = UIHostingController(rootView: PastTripsView())
+                window.rootViewController = UIHostingController(rootView: PastTripsView(userUID: userUID))
             case .planTrip:
-                window.rootViewController = UIHostingController(rootView: SecondView())
+                window.rootViewController = UIHostingController(rootView: SecondView(userUID: userUID))
             case .profile:
-                window.rootViewController = UIHostingController(rootView: ProfileView())
+                window.rootViewController = UIHostingController(rootView: ProfileView(userUID: userUID))
             case .settings:
-                window.rootViewController = UIHostingController(rootView: SettingsView())
+                window.rootViewController = UIHostingController(rootView: SettingsView(userUID: userUID))
             }
             window.makeKeyAndVisible()
         }

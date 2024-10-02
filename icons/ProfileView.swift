@@ -1686,6 +1686,8 @@ struct ProfileView: View {
     @State private var loading: Bool = true
     @State private var errorMessage: String? = nil
     @State private var showRemovePictureAlert = false  // State for showing the remove picture alert
+    
+    var userUID: String
 
     let gradientStartColor = Color(UIColor(red: 141/255, green: 172/255, blue: 225/255, alpha: 1))
     let gradientEndColor = Color(UIColor(red: 41/255, green: 102/255, blue: 117/255, alpha: 1))
@@ -1849,13 +1851,13 @@ struct ProfileView: View {
 
                     HStack {
                         Spacer()
-                        TabBarItem(iconName: "briefcase", label: "Past Trips", destination: AnyView(SecondView()))
+                        TabBarItem(iconName: "briefcase", label: "Past Trips", destination: AnyView(SecondView(userUID: userUID)))
                         Spacer()
-                        TabBarItem(iconName: "globe", label: "Plan Trip", destination: AnyView(SecondView()))
+                        TabBarItem(iconName: "globe", label: "Plan Trip", destination: AnyView(SecondView(userUID: userUID)))
                         Spacer()
-                        TabBarItem(iconName: "person.fill", label: "Profile", destination: AnyView(ProfileView()), isSelected: true)  // Highlight profile icon
+                        TabBarItem(iconName: "person.fill", label: "Profile", destination: AnyView(ProfileView(userUID: userUID)), isSelected: true)  // Highlight profile icon
                         Spacer()
-                        TabBarItem(iconName: "gearshape", label: "Settings", destination: AnyView(SettingsView()))
+                        TabBarItem(iconName: "gearshape", label: "Settings", destination: AnyView(SettingsView(userUID: userUID)))
                         Spacer()
                     }
                     .frame(height: 72)

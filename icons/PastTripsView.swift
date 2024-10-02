@@ -13,6 +13,8 @@ struct PastTripsView: View {
     let gradientEndColor = Color(UIColor(red: 41/255, green: 102/255, blue: 117/255, alpha: 1))
     
     @State private var selectedTab: Tab = .pastTrips // Manage the active tab state
+    @State private var pastTrips: [String] = []
+    var userUID: String  // Unique identifier for the current user
 
     var body: some View {
         ZStack {
@@ -50,15 +52,11 @@ struct PastTripsView: View {
                         .padding(.top, 20)
                         .foregroundColor(Color(UIColor(red: 78/255, green: 115/255, blue: 134/255, alpha: 1))) // Adjust label color
 
-                    List {
-                        Section(header: Text("Recent Trips")) {
-                            Text("Trip to Paris - 2024")
-                            Text("Trip to New York - 2023")
-                            Text("Trip to Tokyo - 2022")
+                    List(pastTrips, id: \.self) {
+                        trip in Text(trip)
                         }
-                    }
-                    .listStyle(InsetGroupedListStyle())
-                    .frame(height: 300) // Adjust list height as needed
+                        .listStyle(InsetGroupedListStyle())
+                        .frame(height: 300)
                 }
                 .padding(.horizontal, 20)
                 .background(Color.white)
@@ -104,13 +102,23 @@ struct PastTripsView: View {
 
             // Conditionally switch views based on selected tab
             if selectedTab == .planTrip {
-                SecondView()  // Show Plan Trip page (SecondView)
+                SecondView(userUID: userUID)  // Show Plan Trip page (SecondView)
             } else if selectedTab == .profile {
-                ProfileView()  // Show Profile page
+                ProfileView(userUID: userUID)  // Show Profile page
             } else if selectedTab == .settings {
-                SettingsView()  // Show Settings page
+                SettingsView(userUID: userUID)  // Show Settings page
             }
         }
+        .onAppear {
+                    loadPastTrips()  // Load past trips when the view appears
+                }
+        
+    }
+    
+    // Load past trips for the current user from UserDefaults
+    func loadPastTrips() {
+        let planController = PlanController()  // Assuming PlanController is defined elsewhere
+        self.pastTrips = planController.getPastTrips(userUID: userUID)  // Get trips for the current user
     }
 
     // Tab Bar Item View
@@ -138,3 +146,5 @@ enum Tab {
     case profile
     case settings
 }
+
+
