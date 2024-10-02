@@ -11,6 +11,7 @@ import SwiftUI
 struct ItineraryView: View {
     var location: String  // name of the location
     var days: Int  // number of days for the trip
+    var userUID: String  // Add userUID
     @ObservedObject var planController: PlanController
 
     // height and width of the buttons for each day
@@ -85,7 +86,7 @@ struct ItineraryView: View {
         .onAppear {
             // Only fetch the data once if not already generated
             if !planController.hasGeneratedActivities {
-                planController.sendNewMessage(location: location, filter: "Relaxing", days: days)
+                planController.sendNewMessage(userUID: userUID, location: location, filter: "Relaxing", days: days)
             }
         }
     }

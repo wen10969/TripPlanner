@@ -15,6 +15,8 @@ struct SecondView: View {
     let gradientStartColor = Color(UIColor(red: 141/255, green: 172/255, blue: 225/255, alpha: 1))
     let gradientEndColor = Color(UIColor(red: 41/255, green: 102/255, blue: 117/255, alpha: 1))
     
+    var userUID: String
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -129,7 +131,7 @@ struct SecondView: View {
                     
                     // Correct functionality for "Plan Your Next Trip!" button
                     NavigationLink(
-                        destination: ItineraryView(location: selectedCity, days: selectedDays, planController: planController)) {
+                        destination: ItineraryView(location: selectedCity, days: selectedDays, userUID: userUID, planController: planController)) {
                         Text("Plan Your Next Trip!")
                             .font(.headline)
                             .padding()
@@ -145,13 +147,13 @@ struct SecondView: View {
                     // Tab Bar
                     HStack {
                         Spacer()
-                        TabBarItem(iconName: "briefcase", label: "Past Trips")
+                        TabBarItem(iconName: "briefcase", label: "Past Trips", userUID: userUID)
                         Spacer()
-                        TabBarItem(iconName: "globe", label: "Plan Trip", isSelected: true)  // Highlight 'Plan Trip' icon
+                        TabBarItem(iconName: "globe", label: "Plan Trip", isSelected: true, userUID: userUID)  // Highlight 'Plan Trip' icon
                         Spacer()
-                        TabBarItem(iconName: "person", label: "Profile")
+                        TabBarItem(iconName: "person", label: "Profile", userUID: userUID)
                         Spacer()
-                        TabBarItem(iconName: "gearshape", label: "Settings")
+                        TabBarItem(iconName: "gearshape", label: "Settings", userUID: userUID)
                         Spacer()
                     }
                     .frame(height: 80)
@@ -183,7 +185,7 @@ struct SecondView: View {
             }
     }
 
-    private func TabBarItem(iconName: String, label: String, isSelected: Bool = false) -> some View {
+    private func TabBarItem(iconName: String, label: String, isSelected: Bool = false, userUID: String) -> some View {
         VStack {
             Image(systemName: iconName)
                 .foregroundColor(isSelected ? gradientEndColor : .blue)  // Highlight if selected
@@ -201,17 +203,17 @@ struct SecondView: View {
                 break
             case "Profile":
                 if let window = UIApplication.shared.windows.first {
-                    window.rootViewController = UIHostingController(rootView: ProfileView())
+                    window.rootViewController = UIHostingController(rootView: ProfileView(userUID: userUID))
                     window.makeKeyAndVisible()
                 }
             case "Past Trips":
                 if let window = UIApplication.shared.windows.first {
-                    window.rootViewController = UIHostingController(rootView: PastTripsView())
+                    window.rootViewController = UIHostingController(rootView: PastTripsView(userUID: userUID))
                     window.makeKeyAndVisible()
                 }
             case "Settings":
                 if let window = UIApplication.shared.windows.first {
-                    window.rootViewController = UIHostingController(rootView: SettingsView())
+                    window.rootViewController = UIHostingController(rootView: SettingsView(userUID: userUID))
                     window.makeKeyAndVisible()
                 }
             default:
