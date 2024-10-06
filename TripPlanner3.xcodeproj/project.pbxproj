@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		B545CE73CFB789D6E39EA22B /* Pods_TripPlanner3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73D99151A11AE8CBB7350A40 /* Pods_TripPlanner3.framework */; };
+		DB3A67872CB24ADA0092CE75 /* button.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3A67862CB24ADA0092CE75 /* button.swift */; };
+		DB3A678B2CB2749D0092CE75 /* DayActivities.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3A678A2CB2749D0092CE75 /* DayActivities.swift */; };
+		DB3A678D2CB279C30092CE75 /* iteneraryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3A678C2CB279C30092CE75 /* iteneraryModels.swift */; };
 		DB3D11662C6199E50067E215 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D11652C6199E50067E215 /* AppDelegate.swift */; };
 		DB3D11682C6199E50067E215 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D11672C6199E50067E215 /* SceneDelegate.swift */; };
 		DB3D11722C6199E60067E215 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = DB3D11712C6199E60067E215 /* Base */; };
@@ -70,6 +73,9 @@
 		73D99151A11AE8CBB7350A40 /* Pods_TripPlanner3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TripPlanner3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7687867CE8263CFC0FC021CD /* Pods-TripPlanner3.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripPlanner3.debug.xcconfig"; path = "Target Support Files/Pods-TripPlanner3/Pods-TripPlanner3.debug.xcconfig"; sourceTree = "<group>"; };
 		9FEFD8157563E618C22E404D /* Pods-TripPlanner3.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TripPlanner3.release.xcconfig"; path = "Target Support Files/Pods-TripPlanner3/Pods-TripPlanner3.release.xcconfig"; sourceTree = "<group>"; };
+		DB3A67862CB24ADA0092CE75 /* button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = button.swift; sourceTree = "<group>"; };
+		DB3A678A2CB2749D0092CE75 /* DayActivities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayActivities.swift; sourceTree = "<group>"; };
+		DB3A678C2CB279C30092CE75 /* iteneraryModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iteneraryModels.swift; sourceTree = "<group>"; };
 		DB3D11622C6199E50067E215 /* TripPlanner3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TripPlanner3.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB3D11652C6199E50067E215 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB3D11672C6199E50067E215 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -228,6 +234,7 @@
 				DBC8A0552C8D64FE0034CA2D /* IntroController.swift */,
 				DBC8A0772C9695A80034CA2D /* PlanController.swift */,
 				DBC8A07C2C96969C0034CA2D /* ImageController.swift */,
+				DB3A67862CB24ADA0092CE75 /* button.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -254,6 +261,8 @@
 				DBC8A0802C9697370034CA2D /* PlanView.swift */,
 				DBC8A0822C96975F0034CA2D /* DayActivityView.swift */,
 				DBC8A0862C96B6AF0034CA2D /* ChangeEmailView.swift */,
+				DB3A678A2CB2749D0092CE75 /* DayActivities.swift */,
+				DB3A678C2CB279C30092CE75 /* iteneraryModels.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -474,6 +483,7 @@
 				DB3D11B22C6451CA0067E215 /* LoginUserRequest.swift in Sources */,
 				DB3D11B62C645AAD0067E215 /*  User.swift in Sources */,
 				DB3D11A92C64488F0067E215 /* WebViewerController.swift in Sources */,
+				DB3A678D2CB279C30092CE75 /* iteneraryModels.swift in Sources */,
 				DB3D11AD2C64515F0067E215 /* AuthService.swift in Sources */,
 				DBC8A0702C962E050034CA2D /* ProfileHeaderView.swift in Sources */,
 				DBC8A0812C9697370034CA2D /* PlanView.swift in Sources */,
@@ -491,6 +501,8 @@
 				DB3D11A12C6447F80067E215 /* AuthHeaderView.swift in Sources */,
 				DB3D11A52C6448270067E215 /* CustomTextField.swift in Sources */,
 				DBC8A0522C894BD80034CA2D /* SecondView.swift in Sources */,
+				DB3A67872CB24ADA0092CE75 /* button.swift in Sources */,
+				DB3A678B2CB2749D0092CE75 /* DayActivities.swift in Sources */,
 				DBC8A0782C9695A80034CA2D /* PlanController.swift in Sources */,
 				DBC8A0722C962FFC0034CA2D /* SettingsView.swift in Sources */,
 			);
@@ -675,7 +687,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -705,7 +717,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
